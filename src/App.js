@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { Request } from './Request/index'
 function App() {
+
+  const data = Request('post', 'user/employees', {id: 4})
+  
   return (
     <div className="App">
       <header className="App-header">
