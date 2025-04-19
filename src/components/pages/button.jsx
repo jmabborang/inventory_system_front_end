@@ -1,4 +1,4 @@
-import { Stack, Button, IconButton } from '@mui/material'
+import { Stack, Button, IconButton, ButtonGroup} from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check';
 
 function ButtonUI() {
@@ -28,6 +28,18 @@ function ButtonUI() {
 				<IconButton aria-label='send' color='success' size='small'>
 				  <CheckIcon/>
 				</IconButton>
+			</Stack>
+			<Stack direction={'row'}>
+				<ButtonGroup 
+					variant='contained'
+					orientation='vertical' 
+					color='secondary'
+					aria-label='Alignment button'
+				>
+					<Button onClick={()=>alert('Left Click')}>Left</Button>
+					<Button>Center</Button>
+					<Button>Right</Button>
+				</ButtonGroup>
 			</Stack>
 		</Stack>
 	)
