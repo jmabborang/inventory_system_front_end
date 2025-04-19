@@ -1,7 +1,16 @@
-import { Stack, Button, IconButton, ButtonGroup} from '@mui/material'
+import { Stack, Button, IconButton, ButtonGroup, ToggleButtonGroup, ToggleButton} from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check';
+import FormatBoldIcon from '@mui/icons-material/FormatBold'
+import FormatItalicIcon from '@mui/icons-material/FormatItalic'
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined'
+import { useState } from 'react';
 
 function ButtonUI() {
+	const [format, setFormat] = useState([])
+	console.log('formats', format)
+	const handleFormatChange = (_event, updateFormats) => {
+		setFormat(updateFormats)
+	}
 	return (
 		<Stack spacing={2}>
 			<Stack spacing={2} direction='row'>
@@ -40,6 +49,17 @@ function ButtonUI() {
 					<Button>Center</Button>
 					<Button>Right</Button>
 				</ButtonGroup>
+			</Stack>
+			<Stack direction={'row'}>
+				<ToggleButtonGroup aria-label='text formatting' orientation='vertical' color='success' value={format} 
+					size='sm'
+					onChange={handleFormatChange}
+					exclusive
+				>
+					<ToggleButton value='bold' aria-label='Bold'><FormatBoldIcon/></ToggleButton>
+					<ToggleButton value='italic' aria-label='Italic'><FormatItalicIcon/></ToggleButton>
+					<ToggleButton value='underlined' aria-label='Underlined'><FormatUnderlinedIcon/></ToggleButton>
+				</ToggleButtonGroup>
 			</Stack>
 		</Stack>
 	)
