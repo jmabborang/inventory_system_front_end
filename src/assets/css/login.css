@@ -1,0 +1,10 @@
+.login-page {
+	height: 100vh;
+}
+.content-center {
+	align-content: center;
+}
+.login-form {
+	align-items: center;
+	margin: 30px;
+}
