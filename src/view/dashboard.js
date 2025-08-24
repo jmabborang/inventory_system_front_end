@@ -185,7 +185,7 @@ export default function PrimarySearchAppBar() {
   const renderView = () => {
     switch (view) {
       case 'dashboard':
-        return <DashboardView/>;
+        return <><title>{view.toUpperCase()}</title><DashboardView/></>;
       case 'inventory':
         return <h2>Inventory View</h2>;
       case 'security':
@@ -285,21 +285,25 @@ export default function PrimarySearchAppBar() {
       </Box>
       <Box display="flex">
         <Navigation setView={setView} />
-        <Box sx={{ height: "100vh", bgcolor: "lightgray" }} flexGrow={1} p={2} >
-          <Breadcrumbs aria-label="breadcrumb" pb={4}>
-            <Link underline="hover" color="inherit" href="/dashboard">
-              Dashboard
-            </Link>
-            <Link
-              underline="hover"
-              color="inherit"
-              href="/material-ui/getting-started/installation/"
-            >
-              Core
-            </Link>
-            <Typography sx={{ color: 'text.primary' }}>Breadcrumbs</Typography>
-          </Breadcrumbs>
-          {renderView()}
+        <Box sx={{ height: "100vh", bgcolor: "#fff" }} flexGrow={1}>
+          <Box mt={2} mr={2} mb={2} ml={2}>
+            <Breadcrumbs aria-label="breadcrumb" mb={2}>
+              <Link underline="hover" color="inherit" href="/dashboard">
+                Dashboard
+              </Link>
+              <Link
+                underline="hover"
+                color="inherit"
+                href="/material-ui/getting-started/installation/"
+              >
+                Core
+              </Link>
+              <Typography sx={{ color: 'text.primary' }}>Breadcrumbs</Typography>
+            </Breadcrumbs>
+            <div>
+              {renderView()}
+            </div> 
+          </Box>
         </Box>
     </Box>
     </>
