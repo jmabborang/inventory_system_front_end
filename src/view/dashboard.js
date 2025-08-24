@@ -19,6 +19,9 @@ import Navigation from './navigation';
 import DashboardView from './components/dashboard_view'
 import { useNavigate } from 'react-router-dom';
 import LinearProgress from '@mui/material/LinearProgress';
+import '../assets/css/test.css'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import Link from '@mui/material/Link'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -68,6 +71,13 @@ export default function PrimarySearchAppBar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const navigate = useNavigate();
   const [view, setView] = React.useState('dashboard');
+  const [breadCrumbs, setbreadCrumbs] = React.useState([
+    {
+      name: 'Dashboard',
+      url: '/',
+    }
+  ]);
+  
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -275,7 +285,20 @@ export default function PrimarySearchAppBar() {
       </Box>
       <Box display="flex">
         <Navigation setView={setView} />
-        <Box flexGrow={1} p={3}>
+        <Box sx={{ height: "100vh", bgcolor: "lightgray" }} flexGrow={1} p={2} >
+          <Breadcrumbs aria-label="breadcrumb" pb={4}>
+            <Link underline="hover" color="inherit" href="/dashboard">
+              Dashboard
+            </Link>
+            <Link
+              underline="hover"
+              color="inherit"
+              href="/material-ui/getting-started/installation/"
+            >
+              Core
+            </Link>
+            <Typography sx={{ color: 'text.primary' }}>Breadcrumbs</Typography>
+          </Breadcrumbs>
           {renderView()}
         </Box>
     </Box>
