@@ -19,6 +19,9 @@ import Navigation from './navigation';
 import DashboardView from './components/dashboard_view'
 import { useNavigate } from 'react-router-dom';
 import LinearProgress from '@mui/material/LinearProgress';
+import '../assets/css/test.css'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import Link from '@mui/material/Link'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -68,6 +71,13 @@ export default function PrimarySearchAppBar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const navigate = useNavigate();
   const [view, setView] = React.useState('dashboard');
+  const [breadCrumbs, setbreadCrumbs] = React.useState([
+    {
+      name: 'Dashboard',
+      url: '/',
+    }
+  ]);
+  
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);

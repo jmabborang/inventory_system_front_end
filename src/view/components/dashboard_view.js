@@ -10,6 +10,8 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import SecurityIcon from "@mui/icons-material/Security";
 import GroupIcon from "@mui/icons-material/Group";
+import '../../assets/css/test.css';
+import FormatterDemo from './chart_component';
 
 const DashboardView = () => {
   const modules = [
@@ -46,61 +48,63 @@ const DashboardView = () => {
   const [selectedCard, setSelectedCard] = React.useState(null);
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-        gap: 3,
-        padding: 3,
-      }}
-    >
-      {modules.map((module, index) => (
-        <Card
-          key={module.id}
-          sx={{
-            borderRadius: 3,
-            boxShadow: 3,
-            transition: "0.3s",
-            "&:hover": {
-              transform: "translateY(-5px)",
-              boxShadow: 6,
-            },
-            ...(selectedCard === index && {
-              border: "2px solid #1976d2",
-            }),
-          }}
-        >
-          <CardActionArea onClick={() => setSelectedCard(index)}>
-            <CardContent>
-              <Stack direction="row" spacing={2} alignItems="center">
-                <Avatar
-                  sx={{
-                    bgcolor: "#1976d2",
-                    width: 46,
-                    height: 46,
-                  }}
-                >
-                  {module.icon}
-                </Avatar>
-                <Box>
-                  <Typography variant="h6">{module.title}</Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{ fontWeight: "bold", lineHeight: 1 }}
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          gap: 3,
+        }}
+      >
+        {modules.map((module, index) => (
+          <Card
+            key={module.id}
+            sx={{
+              borderRadius: 3,
+              boxShadow: 3,
+              transition: "0.3s",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: 6,
+              },
+              ...(selectedCard === index && {
+                border: "2px solid #1976d2",
+              }),
+            }}
+          >
+            <CardActionArea onClick={() => setSelectedCard(index)}>
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Avatar
+                    sx={{
+                      bgcolor: "#1976d2",
+                      width: 46,
+                      height: 46,
+                    }}
                   >
-                    {module.count}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {module.subtitle}
-                  </Typography>
-                </Box>
-              </Stack>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
-    </Box>
+                    {module.icon}
+                  </Avatar>
+                  <Box>
+                    <Typography variant="h6">{module.title}</Typography>
+                    <Typography
+                      variant="h5"
+                      sx={{ fontWeight: "bold", lineHeight: 1 }}
+                    >
+                      {module.count}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {module.subtitle}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        ))}
+      </Box>
+      <FormatterDemo/>
+    </>
   );
 };
 
